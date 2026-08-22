@@ -1,0 +1,303 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffe2eb">
+    <title>Panda 🐼</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<main id="app">
+
+    <section class="page active" id="start">
+        <h1>Ohh Hii 👋 <br>
+        You are Shri right?</h1>
+
+        <div class="buttons">
+            <button onclick="shriChoice('yes')">YES</button>
+            <button class="secondary" onclick="shriChoice('no')">NO</button>
+        </div>
+    </section>
+
+    <section class="page" id="not-shri">
+        <h2>Don't lie 😭</h2>
+        <p>I know you<br>He keeps talking about you</p>
+
+        <button onclick="shriChoice('yes')">
+            YES I AM SHRI
+        </button>
+    </section>
+
+    <section class="page" id="panda-intro">
+        <h2>Hello 👋</h2>
+
+        <p>
+            I am Panda 🐼<br>
+            Vedant's friend<br>
+            Can I be your friend too?
+        </p>
+
+        <div class="buttons">
+            <button onclick="friendChoice('yes')">YES</button>
+            <button class="secondary" onclick="friendChoice('no')">NO</button>
+        </div>
+    </section>
+
+    <section class="page" id="sad">
+        <h2>Panda is sad 🥺😭</h2>
+        <p id="sad-message">Please choose again 😭</p>
+
+        <div class="buttons">
+            <button onclick="friendChoice('yes')">YES</button>
+            <button class="secondary" onclick="friendChoice('no')">NO</button>
+        </div>
+    </section>
+
+    <section class="page" id="friends">
+        <h2>Perfect 🥹❤️</h2>
+
+        <p>So we are friends now.</p>
+        <p>Also he told me to ask you something.</p>
+
+        <button onclick="goTo('boss')">
+            WHAT IS IT?
+        </button>
+    </section>
+
+    <section class="page" id="boss">
+        <h2>Would you like to be his boss?</h2>
+
+        <div class="buttons">
+            <button onclick="bossChoice('yes')">YES</button>
+            <button class="secondary" onclick="bossChoice('no')">NO</button>
+        </div>
+    </section>
+
+    <section class="page" id="already-boss">
+        <h2>Nvm 😭</h2>
+
+        <p>I guess you already are😝.</p>
+
+        <img class="screenshot-image" src="images/IMG-0880.jpg" alt="Screenshot" loading="lazy">
+
+        <button onclick="alreadyBossChoice('yes')">
+            YES I AM😭✌️
+        </button>
+    </section>
+
+    <section class="page" id="boss-question">
+        <p>
+            So being a boss you should know
+            what is going on in his mind.
+        </p>
+
+        <p>
+            Should I tell you exactly what
+            he is thinking of?
+        </p>
+
+        <button onclick="goTo('mind')">
+            YES TELL ME
+        </button>
+    </section>
+
+    <section class="page" id="mind">
+        <h2>This might be a very long list</h2>
+
+        <p>Wait a while...</p>
+
+        <button onclick="goTo('one-thought')">
+            HERE
+        </button>
+    </section>
+
+    <section class="page" id="one-thought">
+        <p>
+            Here it is... wait, just one thought.
+        </p>
+
+        <h1>“YOU”</h1>
+
+        <p>
+            Ohh right... he just thinks about
+            you the whole day.
+        </p>
+
+        <button onclick="goTo('process')">
+            Wait Really😭❤️
+        </button>
+    </section>
+
+    <section class="page" id="process">
+        <p>
+            But there still might be some
+            background process running.
+        </p>
+
+        <p>Want me to check them?</p>
+
+        <button onclick="goTo('malware')">
+            YES SURE
+        </button>
+    </section>
+
+    <section class="page" id="malware">
+        <p>Yeah, I found them.</p>
+
+        <p>
+            Wait... every search has the same
+            word repeating.
+        </p>
+
+        <p>I guess it's a malware attack 😭</p>
+
+        <button onclick="goTo('you-again')">
+            WHAT'S THE WORD?
+        </button>
+    </section>
+
+    <section class="page" id="you-again">
+
+        <h2>The word is...</h2>
+
+        <h1>“YOU”</h1>
+
+        <p>
+            It's you again 😭<br>
+            He just thinks of you❤️.
+        </p>
+
+        <div class="choice-list">
+
+            <div class="choice-card">
+                <h3>Small things he loves about you</h3>
+                <p>
+                    * The way you talk and express yourself.<br>
+                    * Your random little reactions.<br>
+                    * The tiny things you do without even realizing he notices.
+                </p>
+            </div>
+
+            <div class="choice-card">
+                <h3>What do you mean to him</h3>
+                <p>
+                    * Someone who can instantly make his day better.<br>
+                    * Someone he can genuinely be himself with.<br>
+                    * Someone who slowly became much more important than he expected.
+                </p>
+            </div>
+
+            <div class="choice-card">
+                <h3>Things he will never forget about you</h3>
+                <p>
+                    * The little moments that became special.<br>
+                    * The things you've said that stayed with him.<br>
+                    * The memories that still make him smile.
+                </p>
+            </div>
+
+            <div class="choice-card">
+                <h3>Acts you do that make him laugh</h3>
+                <p>
+                    * Your completely random reactions 😭<br>
+                    * The way you argue over tiny things.<br>
+                    * When you try to act serious but make him smile anyway.
+                </p>
+            </div>
+
+        </div>
+
+        <button onclick="goTo('letter-intro')">
+            TAP TO CONTINUE
+        </button>
+
+    </section>
+
+    <section class="page" id="letter-intro">
+
+        <h2>Ohh wait, I forgot something 😭</h2>
+
+        <p>
+            He gave me something and told me
+            to read it to you.
+        </p>
+
+        <button onclick="goTo('letter')">
+            WHAT IS IT?
+        </button>
+
+    </section>
+
+    <section class="page" id="letter">
+
+        <h2>A handwritten paragraph</h2>
+
+        <div class="letter-placeholder">
+            <p>
+                I honestly don’t know how to put everything I feel into words, because whatever I write will still feel less. Somewhere between all our talks, laughs, random moments and everything we’ve shared, you became someone really, really special to me. You make even the most normal days feel better just by being there. I don’t know what happens from here, but I’m genuinely so glad I met you. And if there’s one thing I want you to know, it’s that you mean more to me than I probably ever manage to say. ❤️
+            </p>
+        </div>
+
+        <button onclick="goTo('goodbye')">
+            TAP TO CONTINUE
+        </button>
+
+    </section>
+
+    <section class="page" id="goodbye">
+
+        <p>That's it.</p>
+
+        <p>
+            No doubt why he loves you so much.
+        </p>
+
+        <p>
+            Even I fell for you in the meantime
+            we talked 😭
+        </p>
+
+        <p>
+            But he will kill me, so I will keep
+            them to myself.
+        </p>
+
+        <p>
+            I guess I will have to leave now.
+            It was fun talking to you.
+        </p>
+
+        <p>Bye.</p>
+
+        <button onclick="goTo('final')">
+            BYE
+        </button>
+
+    </section>
+
+    <section class="page final" id="final">
+
+        <h2>Ohh wait...</h2>
+
+        <p>
+            There is something left.
+            It's important.
+        </p>
+
+        <h1>CHECK YOUR DMS</h1>
+
+        <p>BYE 🐼</p>
+
+    </section>
+
+</main>
+
+<audio id="bgMusic" loop="" preload="auto">
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script src="js/script.js"></script>
+
+
+</body></html>
