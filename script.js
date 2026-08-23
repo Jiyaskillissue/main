@@ -2,7 +2,12 @@
 
 let pleaseCount = 0;
 let musicStarted = false;
-let higherVolumeEnabled = false;
+let volumeIncreaseTimer = null;
+
+const START_VOLUME = 0.01;
+const MAX_VOLUME = 0.20;
+const VOLUME_STEP = 0.01;
+const VOLUME_INTERVAL = 3000;
 
 const pandaResting =
     "https://static.vecteezy.com/system/resources/previews/057/384/320/large_2x/cute-cartoon-panda-lying-on-the-floor-resting-with-a-cheerful-face-this-adorable-illustration-is-great-for-kids-designs-animal-lovers-and-creative-projects-with-a-kawaii-theme-vector.jpg";
@@ -94,6 +99,26 @@ function setPandaImage(pageId, imageUrl) {
     }
 }
 
+function startGradualVolumeIncrease() {
+    if (volumeIncreaseTimer || !bgMusic) {
+        return;
+    }
+
+    volumeIncreaseTimer = setInterval(function() {
+        if (bgMusic.volume >= MAX_VOLUME) {
+            bgMusic.volume = MAX_VOLUME;
+            clearInterval(volumeIncreaseTimer);
+            volumeIncreaseTimer = null;
+            return;
+        }
+
+        bgMusic.volume = Math.min(
+            bgMusic.volume + VOLUME_STEP,
+            MAX_VOLUME
+        );
+    }, VOLUME_INTERVAL);
+}
+
 function goTo(pageId) {
     const target = document.getElementById(pageId);
 
@@ -111,11 +136,12 @@ function goTo(pageId) {
     target.setAttribute("aria-hidden", "false");
     target.scrollTop = 0;
 
-    if (pageId === "you-again") {
-        higherVolumeEnabled = true;
+    if (pageId === "you-again" && bgMusic) {
+        bgMusic.volume = MAX_VOLUME;
 
-        if (bgMusic) {
-            bgMusic.volume = 0.5;
+        if (volumeIncreaseTimer) {
+            clearInterval(volumeIncreaseTimer);
+            volumeIncreaseTimer = null;
         }
     }
 }
@@ -173,22 +199,19 @@ addPandaImages();
 const bgMusic = document.getElementById("bgMusic");
 
 if (bgMusic) {
-    bgMusic.volume = 0.2;
+    bgMusic.volume = START_VOLUME;
 
     function startMusic() {
-        if (musicStarted) {
-            return;
+        if (!musicStarted) {
+            bgMusic.play()
+                .then(function() {
+                    musicStarted = true;
+                    startGradualVolumeIncrease();
+                })
+                .catch(function() {
+                    // Try again on the next user interaction if playback is blocked.
+                });
         }
-
-        bgMusic.volume = higherVolumeEnabled ? 0.5 : 0.2;
-
-        bgMusic.play()
-            .then(function() {
-                musicStarted = true;
-            })
-            .catch(function() {
-                // Try again on the next user interaction if playback is blocked.
-            });
     }
 
     document.addEventListener("pointerdown", startMusic);
